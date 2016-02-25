@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="MasterPage.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:define name="content">
+
+        <h:form>
+
+
+            <nav class="navbar navbar-default listagem" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class=""><a href="CadastrarInstituicao.xhtml"><i class="glyphicon glyphicon-plus"></i>  Novo instituição</a></li>
+
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <div class="form-group">
+                                    <h:inputText styleClass="form-control input-pesquisa-listagem" value="#{instituicaoMB.palavraChave}" pt:placeholder="Pesquisar..."/>
+
+                                </div>
+                            </li>
+                            <li>
+                                <h:commandLink class="icon-bar" rel="#{instituicaoMB.filtarInstituicaoPorPalavraChave()}" ><i class="glyphicon glyphicon-search"></i></h:commandLink>
+                            </li>
+                            <li class="info">
+                                <h:link class="icon-bar"><i class="glyphicon glyphicon-filter"></i></h:link>
+                            </li>
+                        </ul>
+
+
+                    </div>
+                </div>
+            </nav>
+
+
+        </h:form>
+        <div id="validacao" class="#{instituicaoMB.classCss} fade in" role="alert">
+            <h:outputLink rendered="#{instituicaoMB.apresentaMensagemFormulario}"  class="close" pt:data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></h:outputLink>
+            <h:outputText escape="false"  value="#{instituicaoMB.mensageFormulario}" />
+        </div>
+        <h:outputText styleClass="text-warning" value="Desculpe, nenhuma item encontrado." rendered="#{instituicaoMB.instituicoes.size() == 0}"  />
+
+        <h:form id="formListagemInstituicao" rendered="#{instituicaoMB.instituicoes.size() > 0}">
+
+            <fieldset>
+                <legend><i class="glyphicon glyphicon-th-list" ></i> Listagem</legend>
+                <h:dataTable var="instituicao" value="#{instituicaoMB.instituicoes}" class="table table-bordered table-hover">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:commandLink value="ID" class="glyphicon glyphicon-sort"/>
+                        </f:facet>
+                        #{instituicao.idInstituicao}                    
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Nome Instituicao
+                        </f:facet>
+                        #{instituicao.nome}                    
+                    </h:column>                
+                    <h:column>
+                        <f:facet name="header">
+                            Descrição
+                        </f:facet>
+                        #{instituicao.cidade}                    
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            Status
+                        </f:facet>
+                        #{instituicao.statusString}   
+
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Ações
+                        </f:facet>
+                        <h:commandLink action="#{instituicaoMB.editar(instituicao)}">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </h:commandLink>
+
+
+                        <h:commandLink action="#{instituicaoMB.excluir(instituicao)}" onclick="return confirm('Deseja realmente excluir?')">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </h:commandLink>                                          
+                    </h:column>
+                </h:dataTable>
+            </fieldset>
+        </h:form>
+
+        <h:form>
+            <h:commandLink action="Dashbord.xhtml" class="btn btn-link">Voltar</h:commandLink>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:aj="http://xmlns.jcp.org/jsf/composite">
+
+    <h:head>
+        <title>IGNORED</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <aj:interface>
+                <aj:attribute name="value" required="true" />
+                <aj:attribute name="completionItens" required="true" />
+
+            </aj:interface>
+            <aj:implementation>
+                <h:outputScript target="head" library="javaScript" name="prototype-1.6.0.2.js" />
+                <h:outputScript target="head" library="javaScript" name="autoComplete.js" />
+
+
+                <h:inputText id="txtPalavraChave" pt:placehorder="Digite aqui..." value="#{cc.attrs.value}" 
+                             valueChangeListener=" " onkeyup="com.corejsf.updeteCompletionItems(this, event)" onblur="com.corejsf.inputLostFocus()" />
+                <h:selectOneListbox id="listaAutoComplete" style="display: none;" valueChangeListener="#{autoComplete.completionItemSelected(e)}" onfocus=" " />
+                <f:selectItems value="#{cc.attrs.completionItens}" />
+                <f:ajax render="txtPalavraChave" />
+
+
+            </aj:implementation>
+        </ui:composition>
+
+    </h:body>
+</html>
+

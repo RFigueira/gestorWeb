@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8'?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="../resources/theme/jquery-2.1.1.js" type="text/javascript"></script>
+        <script src="../resources/theme/jquery-ui.js" type="text/javascript"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="../resources/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+        <link href="../resources/bootstrap/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script src="../resources/theme/mascaras.js" type="text/javascript"></script>
+        <script src="../resources/theme/jquery.mask.js" type="text/javascript"></script>
+        <link href="../resources/theme/inside.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/theme/sticky-footer-navbar" rel="stylesheet" type="text/css"/>
+        <link rel="icon" type="image/png" href="../resources/img/codePampaFavicon.png" />
+        <script src="../resources/theme/fuctionJs.js" type="text/javascript"></script>
+
+
+
+        <!-- 11  Small devices (tablets, 768px and up)  utilizar o col-sm que é visto em todos os dispositivos-->
+        <!--        <h:outputStylesheet library="bootstrap/css" name="bootstrap.min.css" />
+                <h:outputStylesheet library="bootstrap/css" name="bootstrap.css" />
+                <h:outputStylesheet library="bootstrap/css" name="bootstrap.min.css" />
+                <h:outputStylesheet library="bootstrap/css" name="bootstrap-theme.css" />
+                <h:outputStylesheet library="bootstrap/css" name="bootstrap-theme.min.css" />
+                <script src="../resources/javaScript/quickpager.jquery.js" type="text/javascript"></script>
+        
+        
+                <h:outputScript library="bootstrap/js" name="bootstrap.js" />
+                <h:outputScript library="bootstrap/js" name="bootstrap.min.js" />-->
+
+
+
+        <title>IFSul-Bagé</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="header" class="container-fluid">
+            <ui:insert name="header">
+                <h:form>
+                    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+
+                                </button>
+                                <a class="navbar-brand" href="#">Gestor Web IFSul</a>
+                            </div>
+                            <div class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="Dashbord.xhtml">Dashabord</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sistema<b class="caret"></b></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li role="presentation" class="dropdown-header"><i class="glyphicon glyphicon-home"></i> Campus</li>
+                                            <li class=""><h:commandLink action="CadastrarInstituicao?faces-redirect=true" value="Cadastrar"/></li>
+                                            <li class=""><h:commandLink action="ListarInstituicoes?faces-redirect=true">Pesquisar</h:commandLink></li>
+                                            <li class="divider"></li>
+                                            <li role="presentation" class="dropdown-header"><i class="glyphicon glyphicon-cog"></i> Setor</li>
+
+                                            <li class=""><h:commandLink action="CadastrarSetor?faces-redirect=true">Cadastrar</h:commandLink></li>
+                                            <li class=""><h:commandLink action="ListarSetores?faces-redirect=true">Pesquisar</h:commandLink></li>
+                                            <li class="divider"></li>
+                                            <li role="presentation" class="dropdown-header"><i class="glyphicon glyphicon-screenshot"></i> Objetivo</li>
+
+                                            <li class=""><h:commandLink action="CadastrarObjetivo?faces-redirect=true">Cadastrar</h:commandLink></li>
+                                            <li class=""><h:commandLink action="ListarObjetivos?faces-redirect=true">Pesquisar</h:commandLink></li>
+                                            <li class="divider"></li>
+                                            <li role="presentation" class="dropdown-header"><i class="glyphicon glyphicon-tower"></i> Ação</li>
+
+                                            <li class=""><h:commandLink action="CadastrarAcao?faces-redirect=true">Cadastrar</h:commandLink></li>
+                                            <li class=""><h:commandLink action="ListarAcoes?faces-redirect=true">Pesquisar</h:commandLink></li>
+                                            <!--                                            <li class="divider"></li>
+                                                                                        <li role="presentation" class="dropdown-header"><i class="glyphicon glyphicon-certificate"></i> Meta</li>
+                                            
+                                                                                        <li class=""><h:commandLink action="CadastrarMeta.xhtml">Cadastrar</h:commandLink></li>
+                                                                                        <li class=""><h:commandLink action="ListarMetas.xhtml">Pesquisar</h:commandLink></li>-->
+
+                                        </ul>
+
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pessoa<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li role="presentation" class="dropdown-header"><i class="glyphicon glyphicon-user"></i> Pessoa</li>
+                                            <li><h:commandLink action="CadastrarPessoa?faces-redirect=true">Cadastrar</h:commandLink></li>
+                                            <li><h:commandLink action="ListarPessoas?faces-redirect=true">Pesquisar</h:commandLink></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="active"><a href="#"><i class="glyphicon glyphicon-user" style="color: #FEFEFE;"></i>  &nbsp;#{loginMB.pessoaBO.nome}</a></li>
+                                    <li> 
+                                        <h:commandLink  action="#{loginMB.logout()}" value=" Sair" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+
+            </ui:insert>
+
+        </div>
+
+        <div id="content" class="container" style="margin-top: 78px">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+
+        <div id="footer">
+            <ui:insert name="footer">
+                <div class="container">
+                    <p class="text-muted">Desenvolvido por codePampa.</p>
+
+                </div>
+            </ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

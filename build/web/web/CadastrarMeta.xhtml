@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="MasterPage.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+               xmlns="http://www.w3.org/1999/xhtml"
+               xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:define name="content">
+        <h:form class="form-group">
+            <h2><i class="glyphicon glyphicon-edit"></i>Cadastrar Meta</h2> 
+            <fieldset>
+                <h:inputHidden value="#{metaMB.metaBO.idMeta}" />
+                <legend><i class="glyphicon glyphicon-home" ></i>  Detalhes</legend>
+                <div id="divID" class="row">
+                    <div class="form-group  col-sm-1 ">
+                        <label>Id</label>
+
+                        <h:inputText readonly="true" class="form-control"  value="#{metaMB.metaBO.idMeta}" />
+                    </div>
+
+
+                </div>
+                <div id="divDadosIniciais" class="row full">
+
+                    <div class="form-group col-sm-8">
+                        <label>Titulo</label>
+                        <h:inputText  class="form-control" value="#{metaMB.metaBO.nome}"/>
+                    </div>
+
+                </div>
+                <div id="divDadosIniciais" class="row full">
+
+                    <div class="form-group col-sm-2">
+                        <label>Data Inicio</label>
+                        <h:inputText  class="form-control" value="#{metaMB.metaBO.dataInicio}"/>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label style="margin-top: 30px;
+                               margin-left: 60px;">Até</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label>Data Fim</label>
+                        <h:inputText  class="form-control" value="#{metaMB.metaBO.dataFim}"/>
+                    </div>
+
+                </div>
+
+                <div id="divDadosIniciais" class="row">
+
+                    <div class="form-group col-sm-8">
+                        <label>Descrição</label>
+                        <h:inputTextarea rows="5" class="form-control" value="#{metaMB.metaBO.descricao}" />
+                    </div>
+
+                </div>
+                <div id="divDadosIniciais" class="row">
+
+                    <div class="form-group col-sm-2" >
+                        <h:outputLabel >Objetivo</h:outputLabel>
+                        <h:selectOneMenu class="input input-sm" label="lblinstituicao" value="#{metaMB.metaBO.acaoBO}" 
+                                         converter="conversorInstituicao">
+                            <f:selectItem itemLabel="Selecione uma instituicao." itemValue="-1" 
+                                          />
+                            <f:selectItems  value="#{metaMB.acoes}" var="acao" 
+                                            itemLabel="#{acao}" 
+                                            itemValue="#{acao}" 
+                                            />
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group  col-sm-3 ">
+                        <label>Status</label>
+                        <h:selectOneRadio value="#{metaMB.metaBO.status}" class=" ">
+                            <f:selectItem  itemValue="1" itemLabel=" Ativo"  />
+                            <f:selectItem  itemValue="2" itemLabel=" Inativo"  />
+                        </h:selectOneRadio>
+                    </div>
+                </div>
+
+                <h:commandLink action="#{instituicaoMB.novo()}" class="btn btn-primary col-sm-offset-10" >
+                    <i class="glyphicon glyphicon-plus"></i>Novo
+                </h:commandLink>       
+                <h:commandLink class="btn btn-info" action="#{instituicaoMB.salvar()}" style="margin-left: 30px;" onclick="return confirm('Deseja realmente salvar?')">
+                    <i class="glyphicon glyphicon-floppy-saved"></i>
+                    Salvar
+                </h:commandLink>       
+            </fieldset>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

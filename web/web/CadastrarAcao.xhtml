@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="MasterPage.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:aj="http://xmlns.jcp.org/jsf/composite/componentes">
+
+    <ui:define name="content">
+
+
+        <h:form class="form-group" >
+
+            <fieldset>
+                <legend><h2><i class="glyphicon glyphicon-tower" ></i>  Cadastrar Ação</h2> </legend>
+                    <div id="validacao" class="#{acaoMB.classCss} fade in" role="alert">
+                        <h:outputLink rendered="#{acaoMB.apresentaMensagemFormulario}"  class="close" pt:data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></h:outputLink>
+                        <h:outputText escape="false"  value="#{acaoMB.mensageFormulario}" />
+                    </div>
+                <div  id="divID" class="row full">
+                    <div class="form-group  col-sm-1 ">
+                        <label>Id</label>
+                        <h:inputHidden value="#{acaoMB.acaoBO.idAcao}" />
+                        <h:inputText readonly="true" class="form-control"  value="#{acaoMB.acaoBO.idAcao}" />
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label>Data Cadastro</label>
+                        <h:inputText  styleClass="form-control data" value="#{acaoMB.acaoBO.data}">
+                        </h:inputText>
+                    </div>
+                </div>
+                <div id="divDadosIniciais" class="row full">
+                    <div class="form-group col-sm-8">
+                        <label>Titulo</label>
+                        <h:inputText  class="form-control" value="#{acaoMB.acaoBO.nome}"/>
+                    </div>
+                </div>
+                <div id="divDadosIniciais" class="row full">
+                    <div class="form-group col-sm-2" >
+                        <label>Objetivo</label>
+                        <h:selectOneMenu readonly="false" class="input input-sm" label="lblinstituicao" value="#{acaoMB.acaoBO.objetivoBO}" 
+                                         converter="conversorObjetivo">
+                            <f:selectItem itemLabel="Selecione um objetivo." itemValue="-1" 
+                                          noSelectionOption="true"    />
+                            <f:selectItems   value="#{acaoMB.objetivos}" var="objetivo" 
+                                             itemLabel="#{objetivo}" 
+                                             itemValue="#{objetivo}" 
+                                             />
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="form-group col-sm-2"></div>
+                </div>
+
+
+                <div id="divDadosIniciais" class="row full">
+
+                    <div class="form-group col-sm-8">
+                        <label>Descrição</label>
+                        <h:inputTextarea rows="5" class="form-control" value="#{acaoMB.acaoBO.descricao}" />
+                    </div>
+                </div>
+                <div class="row full">
+                    <div class="form-group  col-sm-8 ">
+                        <label>Status</label>
+                        <h:selectOneRadio value="#{acaoMB.acaoBO.status}" class="radio-radio">
+                            <f:selectItem  itemValue="1" itemLabel="  Ativo"  />
+                            <f:selectItem  itemValue="2" itemLabel="  Inativo"  />
+                            <f:selectItem  itemValue="3" itemLabel="  Em Andamento"  />
+                            <f:selectItem  itemValue="4" itemLabel="  Concluido"  />
+                        </h:selectOneRadio>
+                    </div>
+                </div>
+                <h:commandLink action="#{acaoMB.novo()}" class="btn btn-primary " >
+                    <i class="glyphicon glyphicon-plus"></i>Novo
+                </h:commandLink>       
+                <h:commandLink class="btn btn-info" action="#{acaoMB.salvar()}" style="margin-left: 30px;">
+                    <i class="glyphicon glyphicon-floppy-saved"></i>
+                    Salvar
+                </h:commandLink>       
+            </fieldset>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

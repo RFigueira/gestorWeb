@@ -1,0 +1,51 @@
+.radio-radio{
+
+    padding: 10px;
+
+}
+
+.listagem{
+
+    height:  0px;
+
+}
+.input-pesquisa-listagem{
+
+    margin-top: 5px;        
+    margin-left: 0px;
+}
+.bs-callout-cinza {
+    padding: 20px;
+    margin: 20px 0;
+    border: 2px solid white;
+    border-left-width: 5px;
+    border-radius: 3px;
+    //display: inline-block;
+}
+
+.bs-callout-danger {
+    border-left-color: #d9534f !important;
+}
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 2px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+   // display: inline-block;
+}
+
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+
+.bs-callout-info {
+    border-left-color: #5bc0de;
+}
+
+.login{
+    height: 130px;
+    width: 130px;
+    margin-right: auto; 
+    margin-left: 70px;
+}

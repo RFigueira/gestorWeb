@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="MasterPage.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:define name="content">
+        <h:form class="form-group" >
+            <fieldset>
+                <h:inputHidden value="#{instituicaoMB.instituicaoBO.idInstituicao}" />
+                <legend><h2><i class="glyphicon glyphicon-home" ></i>  Cadastrar Campus</h2> </legend>
+                <div id="validacao" class="#{instituicaoMB.classCss} fade in" role="alert">
+                    <h:outputLink rendered="#{instituicaoMB.apresentaMensagemFormulario}"  class="close" pt:data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></h:outputLink>
+                    <h:outputText escape="false"  value="#{instituicaoMB.mensageFormulario}" />
+                </div>
+                <div id="divID" class="row">
+
+                    <div  class="form-group col-sm-1 ">
+                        <label>Código</label>
+                        <h:inputText  readonly="true" class="form-control"  value="#{instituicaoMB.instituicaoBO.idInstituicao}"/>
+                    </div>
+                </div>
+                <div id="divDadosIniciais" class="row full">
+
+                    <div class="form-group col-sm-4">
+                        <label>Nome</label>
+                        <h:inputText  class="form-control" maxlength="10" value="#{instituicaoMB.instituicaoBO.nome}">
+                        </h:inputText>
+                    </div>
+                    <div class="form-group col-sm-1">
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label>Fundação</label>
+                        <h:inputText  maxlength="14" styleClass="form-control data" value="#{instituicaoMB.instituicaoBO.fundacao}">
+                            
+                        </h:inputText>
+                    </div>
+                    <div class="form-group col-sm-1">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label>Telefone principal</label>
+                        <h:inputText maxlength="20" id="ddTelefone" styleClass="form-control ddTelefone" value="#{instituicaoMB.instituicaoBO.telefone}"/>
+                    </div>
+                </div>
+                <div id="divDadosIniciais" class="row">
+
+                    <div class="form-group col-sm-6">
+                        <label>Rua</label>
+                        <h:inputText class="form-control" value="#{instituicaoMB.instituicaoBO.rua}"/>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label>Bairro</label>
+                        <h:inputText class="form-control" value="#{instituicaoMB.instituicaoBO.bairro}"/>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label>Número</label>
+                        <h:inputText  class="form-control" value="#{instituicaoMB.instituicaoBO.numero}"/>
+                    </div>
+                </div>
+                <div id="divDadosIniciais" class="row">
+                    <div class="form-group col-sm-3">
+                        <label>Cep</label>
+                        <h:inputText  styleClass="form-control cep" value="#{instituicaoMB.instituicaoBO.cep}"/>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label>Estado</label>
+                        <h:inputText class="form-control" value="#{instituicaoMB.instituicaoBO.estado}"/>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label>Cidade</label>
+                        <h:inputText  class="form-control" value="#{instituicaoMB.instituicaoBO.cidade}"/>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label>Pais</label>
+                        <h:inputText  class="form-control" value="#{instituicaoMB.instituicaoBO.pais}"/>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <label>Status</label>
+                    <h:selectOneRadio value="#{instituicaoMB.instituicaoBO.status}" style="margin-left: 10px;">
+                        <f:selectItem  itemValue="1" itemLabel="Ativo" />
+                        <f:selectItem  itemValue="2" itemLabel="Inativo"  />
+                    </h:selectOneRadio>
+                </div>
+
+                <h:commandLink action="#{instituicaoMB.novo()}" class="btn btn-primary col-sm-offset-9" >
+                    <i class="glyphicon glyphicon-plus"></i>Novo
+                </h:commandLink>       
+                <h:commandLink class="btn btn-info" action="#{instituicaoMB.salvar()}" style="margin-left: 30px;">
+                    <i class="glyphicon glyphicon-floppy-saved"></i>
+                    Salvar
+                </h:commandLink>       
+            </fieldset>
+
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

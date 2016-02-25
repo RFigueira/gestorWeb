@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<facelet-taglib version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"  
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+                xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd">  
+    <namespace>http://genericos.com/</namespace>  
+  
+    <tag>  
+        <tag-name>Paginador</tag-name>  
+        <attribute>  
+            
+            <type>javax.faces.Command</type>  
+        </attribute>  
+        <component>  
+            <component-type>javax.faces.Command</component-type>  
+            <renderer-type>mypatterns.InputText</renderer-type>  
+        </component>  
+    </tag>  
+</facelet-taglib>  

@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <body>
+        <ui:composition template="MasterPage.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <nav class="navbar navbar-default listagem" role="navigation">
+                        <div class="container-fluid">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    <li class=""><a href="CadastrarObjetivo.xhtml"><i class="glyphicon glyphicon-plus"></i>  Novo objetivo</a></li>
+
+                                </ul>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li>
+                                        <div class="form-group">
+                                            <h:inputText styleClass="form-control input-pesquisa-listagem" value="#{objetivoMB.palavraChave}" pt:placeholder="Pesquisar..."/>
+
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h:commandLink class="icon-bar" rel="#{objetivoMB.filtarObjetivoPorPalavraChave()}" ><i class="glyphicon glyphicon-search"></i></h:commandLink>
+                                    </li>
+                                    <li class="info">
+                                        <h:link class="icon-bar"><i class="glyphicon glyphicon-filter"></i></h:link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </h:form>
+                <div id="validacao" class="#{objetivoMB.classCss} fade in" role="alert">
+                    <h:outputLink rendered="#{objetivoMB.apresentaMensagemFormulario}"  class="close" pt:data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></h:outputLink>
+                    <h:outputText escape="false"  value="#{objetivoMB.mensageFormulario}" />
+                </div>
+                <h:outputText value="Desculpe, nenhuma item encontrado." rendered="#{objetivoMB.objetivos.size() == 0}"  />
+
+                <div class="table-responsive">
+                    <h:form id="formListagemObjetivos" rendered="#{objetivoMB.objetivos.size() > 0}" > 
+                        <fieldset>
+                            <legend><i class="glyphicon glyphicon-th-list" ></i> Listagem</legend>
+                            <h:dataTable var="objetivo" value="#{objetivoMB.objetivos}" class="table table-bordered table-hover">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:commandLink value="ID" class="glyphicon glyphicon-sort"/>
+                                    </f:facet>
+                                    #{objetivo.idObjetivo}                    
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Nome Objetivo
+                                    </f:facet>
+                                    #{objetivo.nome}                    
+                                </h:column>                
+                                <h:column>
+                                    <f:facet name="header">
+                                        Instituicao
+                                    </f:facet>
+                                    #{objetivo.instituicaoBO.nome}   
+
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Status Objetivo
+                                    </f:facet>
+                                    #{objetivo.statusString}   
+
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Total de acoes
+                                    </f:facet>
+                                    #{objetivo.numeroDeAcoes}   
+
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Em Andamento
+                                    </f:facet>
+                                    #{objetivo.numeroAcoesEmAndamentos}   
+
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        Ações Ativas
+                                    </f:facet>
+                                    #{objetivo.numeroAcoesAtivas}   
+
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Ações Inativas
+                                    </f:facet>
+                                    #{objetivo.numeroAcoesInativas}   
+
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Concluidas
+                                    </f:facet>
+                                    #{objetivo.numeroAcoesConcluidas}   
+
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Ações
+                                    </f:facet>
+                                    <h:commandLink action="#{objetivoMB.editar(objetivo)}" >
+                                        <i class="glyphicon glyphicon-edit"></i>
+                                    </h:commandLink>
+
+
+                                    <h:commandLink action="#{objetivoMB.excluir(objetivo)}" onclick="return confirm('Deseja realmente excluir?')">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </h:commandLink>                                          
+                                </h:column>
+                            </h:dataTable>
+                        </fieldset>
+                    </h:form>
+                </div>
+                <h:form>
+
+                    <h:commandLink action="Dashobord.xhtml" class="btn btn-link">Voltar</h:commandLink>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
